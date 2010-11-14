@@ -1,0 +1,32 @@
+== Description
+This {ripl}[http://github.com/cldwalker/ripl] plugin colorizes your results.
+
+== Install
+Install the gem with:
+
+    sudo gem install ripl-colorize_output
+
+== Usage
+
+Add to your ~/.riplrc
+
+    require 'ripl/colorize_output'
+
+You can choose a <tt>:color_output_engine</tt>. By default, the bundled +Wirble+-like colorization is used. Possible other values are:
+
+* <tt>:ap</tt> - using the awesome_print gem
+* <tt>:coderay</tt> - using the coderay gem
+
+Example (in your ~/.riplrc)
+
+     Ripl.config[:color_output_engine] = :coderay
+
+== Credits
+
+The default colorization uses code from Wirble
+* Copyright (C) 2006-2009 Paul Duncan <pabs@pablotron.org>
+* Copyright (C) 2009 Jens Wille <jens.wille@gmail.com>
+
+Copyright (c) 2010 Jan Lelis, http://rbjl.net. See COPYING for details.
+
+J-_-L
