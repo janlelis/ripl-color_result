@@ -21,6 +21,8 @@ Example (in your ~/.riplrc)
 
      Ripl.config[:color_result_engine] = :coderay
 
+Set it to +nil+ to deactivate result colorization.
+
 == Credits
 
 The default colorization uses code from Wirble
@@ -28,5 +30,7 @@ The default colorization uses code from Wirble
 * Copyright (C) 2009 Jens Wille <jens.wille@gmail.com>
 
 Copyright (c) 2010 Jan Lelis, http://rbjl.net. See COPYING for details.
+
+and cldwalker.
 
 J-_-L

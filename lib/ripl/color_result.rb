@@ -2,7 +2,7 @@ require 'ripl'
 
 module Ripl
   module ColorResult
-    VERSION = '0.1.0'
+    VERSION = '0.1.1'
 
     # def inspect_result(result)
     #   result.inspect
@@ -18,6 +18,8 @@ module Ripl
     end
 
     def inspect_result(result)
+      # return super if !config[:color_result_engine]
+
       case config[:color_result_engine].to_sym
       when :coderay
         require 'coderay'
