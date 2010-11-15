@@ -1,3 +1,5 @@
+require 'ripl'
+
 module Ripl
   module ColorResult
     VERSION = '0.1.0'
@@ -7,7 +9,7 @@ module Ripl
     # end
 
     def format_prompt(result)
-      @options[:result_prompt]
+      @result_prompt
     end
 
     def format_result(result)
@@ -15,7 +17,7 @@ module Ripl
     end
 
     def inspect_result(result)
-      case (@options[:color_result_engine] ||= :default).to_sym
+      case config[:color_result_engine].to_sym
       when :coderay
         require 'coderay'
         CodeRay.scan( result.inspect, :ruby ).term
@@ -32,5 +34,6 @@ module Ripl
 end
 
 Ripl::Shell.send :include, Ripl::ColorResult if defined? Ripl::Shell
+Ripl.config[:color_result_engine] ||= :default
 
 # J-_-L
