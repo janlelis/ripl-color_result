@@ -13,6 +13,7 @@ module Ripl
     end
 
     def format_result(result)
+      return super if !config[:color_result_engine]
       format_prompt(result) + inspect_result(result)
     end
 
