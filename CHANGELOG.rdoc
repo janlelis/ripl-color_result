@@ -1,2 +1,9 @@
+== 0.1.2
+* customize default colorization colors with Ripl.config[:color_result_scheme]
+
+== 0.1.1
+* disable coloring with nil
+* updated to ripl
+
 == 0.1.0
 * Initial release.

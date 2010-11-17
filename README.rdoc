@@ -4,13 +4,13 @@ This {ripl}[http://github.com/cldwalker/ripl] plugin colorizes your results.
 == Install
 Install the gem with:
 
-    sudo gem install ripl-color_result
+  sudo gem install ripl-color_result
 
 == Usage
 
 Add to your ~/.riplrc
 
-    require 'ripl/color_result'
+  require 'ripl/color_result'
 
 You can choose a <tt>:color_result_engine</tt>. By default, the bundled +Wirble+-like colorization is used. Possible other values are:
 
@@ -19,9 +19,13 @@ You can choose a <tt>:color_result_engine</tt>. By default, the bundled +Wirble+
 
 Example (in your ~/.riplrc)
 
-     Ripl.config[:color_result_engine] = :coderay
+  Ripl.config[:color_result_engine] = :coderay
 
 Set it to +nil+ to deactivate result colorization.
+
+You can change the colors used by the default colorization by editing the <tt>:color_result_scheme</tt> hash:
+
+  Ripl.config[:color_result_scheme][:comma] = :green
 
 == Credits
 
