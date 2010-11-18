@@ -2,7 +2,7 @@ require 'ripl'
 
 module Ripl
   module ColorResult
-    VERSION = '0.1.2'
+    VERSION = '0.1.3'
     COLORS = {
       :nothing      => '0;0',
       :black        => '0;30',
