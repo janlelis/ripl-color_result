@@ -47,7 +47,8 @@ module Ripl
         require 'ap'
         result.awesome_inspect
       else # :default
-        require 'ripl/color_result/default_colorizer'
+        #require File.expand_path('default_colorizer', dirname(__FILE__))
+        require File.dirname(__FILE__) + "/color_result/default_colorizer"
         DefaultColorizer.colorize_code( result.inspect )
       end
 
