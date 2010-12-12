@@ -27,6 +27,9 @@ You can change the colors used by the default colorization by editing the <tt>:c
 
   Ripl.config[:color_result_scheme][:comma] = :green
 
+If you use <tt>awesome_print</tt>, you can override default options using <tt>:color_result_ap_options</tt> hash:
+  Ripl.config[:color_result_ap_options] = { :multiline => false }
+
 == Credits
 
 The default colorization uses code from Wirble

@@ -45,7 +45,7 @@ module Ripl
         CodeRay.scan( result.inspect, :ruby ).term
       when :ap, :awesome_print
         require 'ap'
-        result.awesome_inspect
+        result.awesome_inspect( config[:color_result_ap_options] || Hash.new )
       else # :default
         #require File.expand_path('default_colorizer', dirname(__FILE__))
         require File.dirname(__FILE__) + "/color_result/default_colorizer"
