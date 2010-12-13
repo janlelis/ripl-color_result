@@ -182,7 +182,7 @@ class << Ripl::ColorResult::DefaultColorizer = Module.new
   def colorize_code(str)
     ret, nocol = '', get_color(:nothing)
     tokenize(str) do |tok, val|
-      ret << colorize_string(val, Ripl.config[:color_result_scheme][tok])
+      ret << colorize_string(val, Ripl.config[:color_result_default_schema][tok])
     end
     ret
   rescue # catch any errors from the tokenizer (just in case)
