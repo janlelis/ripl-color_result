@@ -3,25 +3,6 @@ require 'ripl'
 module Ripl
   module ColorResult
     VERSION = '0.2.0'
-    COLORS = {
-      :nothing      => '0;0',
-      :black        => '0;30',
-      :red          => '0;31',
-      :green        => '0;32',
-      :brown        => '0;33',
-      :blue         => '0;34',
-      :purple       => '0;35',
-      :cyan         => '0;36',
-      :light_gray   => '0;37',
-      :dark_gray    => '1;30',
-      :light_red    => '1;31',
-      :light_green  => '1;32',
-      :yellow       => '1;33',
-      :light_blue   => '1;34',
-      :light_purple => '1;35',
-      :light_cyan   => '1;36',
-      :white        => '1;37',
-    }
 
     def format_result(result)
       return super if !config[:color_result_engine]
@@ -34,51 +15,78 @@ module Ripl
         require 'ap'
         result.awesome_inspect( config[:color_result_ap_options] || {} )
       else # :default
-        require File.dirname(__FILE__) + "/color_result/default_colorizer"
-        DefaultColorizer.colorize_code( result.inspect )
+        require 'wirb'
+        Wirb.colorize_result result.inspect, Ripl.config[:color_result_default_schema]
       end
-
     end
   end
 end
 
-Ripl::Shell.send :include, Ripl::ColorResult
-
+Ripl::Shell.include Ripl::ColorResult
 
 Ripl.config[:color_result_engine] ||= :default
-# color scheme for default colorization, original from wirble
-Ripl.config[:color_result_default_schema] ||= { 
-  # delimiter colors
-  :comma => :blue,
-  :refers => :blue,
+Ripl.config[:color_result_default_schema] ||= { # see Wirb::COLORS for a color list
+    # container
+    :open_hash        => :light_green,
+    :close_hash       => :light_green,
+    :open_array       => :light_green,
+    :close_array      => :light_green,
 
-  # container colors (hash and array)
-  :open_hash => :green,
-  :close_hash => :green,
-  :open_array => :green,
-  :close_array => :green,
+    :open_set         => :green,
+    :close_set        => :green,
+    :open_enumerator  => :green,
+    :close_enumerator => :green,
 
-  # object colors
-  :open_object => :light_red,
-  :object_class => :white,
-  :object_addr_prefix => :blue,
-  :object_line_prefix => :blue,
-  :close_object => :light_red,
+    # delimiter colors
+    :comma            => :green,
+    :refers           => :green,
 
-  # symbol colors
-  :symbol => :yellow,
-  :symbol_prefix => :yellow,
+    # class
+    :class            => :light_green,
+    :class_separator  => :green,
+    :object_class     => :light_green,
 
-  # string colors
-  :open_string => :red,
-  :string => :cyan,
-  :close_string => :red,
+    # object
+    :open_object               => :green,
+    :object_description_prefix => :green,
+    :object_description        => :brown,
+    :object_addr_prefix        => :brown_underline,
+    :object_addr               => :brown_underline,
+    :object_line_prefix        => :brown_underline,
+    :object_line               => :brown_underline,
+    :object_line_number        => :brown_underline,
+    :close_object              => :green,
 
-  # misc colors
-  :number => :cyan,
-  :keyword => :green,
-  :class => :light_green,
-  :range => :red,
+    # symbol
+    :symbol_prefix       => :yellow,
+    :symbol              => :yellow,
+    :open_symbol_string  => :brown,
+    :symbol_string       => :yellow,
+    :close_symbol_string => :brown,
+
+    # string
+    :open_string  => :light_gray,
+    :string       => :dark_gray,
+    :close_string => :light_gray,
+
+    # regexp
+    :open_regexp  => :light_blue,
+    :regexp       => :dark_gray,
+    :close_regexp => :light_blue,
+    :regexp_flags => :light_red,
+
+    # number
+    :number => :cyan,
+    :range  => :red,
+    :open_rational      => :light_cyan,
+    :rational_separator => :light_cyan,
+    :close_rational     => :light_cyan,
+
+    # misc
+    :keyword => nil,
+    :nil     => :light_red,
+    :false   => :red,
+    :true    => :green,
 }
 
 # J-_-L

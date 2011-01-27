@@ -1,3 +1,6 @@
+== 0.3.0
+* Now using Wirb as default colorizer
+
 == 0.2.0
 * Added ap_options to pass a options hash to awesome_inspect (thanks to DirtYiCE)
   * Renamed color_result_schema option to color_result_default_schema (better logical nesting)

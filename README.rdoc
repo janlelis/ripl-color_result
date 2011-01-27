@@ -1,5 +1,5 @@
 == Description
-This {ripl}[http://github.com/cldwalker/ripl] plugin colorizes your results.
+This {ripl}[https://github.com/cldwalker/ripl] plugin colorizes your results.
 
 == Install
 Install the gem with:
@@ -12,10 +12,10 @@ Add to your ~/.riplrc
 
   require 'ripl/color_result'
 
-You can choose a <tt>:color_result_engine</tt>. By default, the bundled +Wirble+-like colorization is used. Possible other values are:
+You can choose a <tt>:color_result_engine</tt>. By default, Wirb[https://github.com/janlelis/wirb]] is used. Possible other values are:
 
-* <tt>:ap</tt> - using the _awesome_print_ gem
-* <tt>:coderay</tt> - using the _coderay_ gem
+* <tt>:ap</tt> - use {awesome_print}[https://github.com/michaeldv/awesome_print]
+* <tt>:coderay</tt> - use {coderay}[http://coderay.rubychan.de/]
 
 Example (in your ~/.riplrc)
 
@@ -24,18 +24,14 @@ Example (in your ~/.riplrc)
 Set it to +nil+ to deactivate result colorization.
 
 You can change the colors used by the default colorization by editing the <tt>:color_result_default_schema</tt> hash:
-  Ripl.config[:color_result_default_schema][:comma] = :green
+  Ripl.config[:color_result_default_schema][:comma] = :blue
 
 If you use <tt>awesome_print</tt>, you can override default options using <tt>:color_result_ap_options</tt> hash:
   Ripl.config[:color_result_ap_options] = { :multiline => false }
 
 == Credits
 
-The default colorization uses code from Wirble
-* Copyright (C) 2006-2009 Paul Duncan <pabs@pablotron.org>
-* Copyright (C) 2009 Jens Wille <jens.wille@gmail.com>
-
-Copyright (c) 2010 Jan Lelis <http://code-needs-smileys.com>, see COPYING for details.
+Copyright (c) 2010 Jan Lelis <http://rbjl.net>, see COPYING for details.
 
 Plus contributions by cldwalker and DirtYiCE.
 
