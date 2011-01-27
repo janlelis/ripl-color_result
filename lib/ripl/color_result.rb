@@ -2,7 +2,7 @@ require 'ripl'
 
 module Ripl
   module ColorResult
-    VERSION = '0.2.0'
+    VERSION = '0.3.0'
 
     def format_result(result)
       return super if !config[:color_result_engine]
