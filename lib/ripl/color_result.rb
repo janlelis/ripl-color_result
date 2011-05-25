@@ -2,7 +2,7 @@ require 'ripl'
 
 module Ripl
   module ColorResult
-    VERSION = '0.3.0'
+    VERSION = '0.3.1'
 
     def format_result(result)
       return super if !config[:color_result_engine]
@@ -16,6 +16,7 @@ module Ripl
         result.awesome_inspect( config[:color_result_ap_options] || {} )
       else # :default
         require 'wirb'
+        Wirb.start
         Wirb.colorize_result result.inspect, Ripl.config[:color_result_default_schema]
       end
     end
@@ -34,8 +35,6 @@ Ripl.config[:color_result_default_schema] ||= { # see Wirb::COLORS for a color l
 
     :open_set         => :green,
     :close_set        => :green,
-    :open_enumerator  => :green,
-    :close_enumerator => :green,
 
     # delimiter colors
     :comma            => :green,
@@ -50,11 +49,13 @@ Ripl.config[:color_result_default_schema] ||= { # see Wirb::COLORS for a color l
     :open_object               => :green,
     :object_description_prefix => :green,
     :object_description        => :brown,
-    :object_addr_prefix        => :brown_underline,
-    :object_addr               => :brown_underline,
+    :object_address_prefi      => :brown_underline,
+    :object_address            => :brown_underline,
     :object_line_prefix        => :brown_underline,
     :object_line               => :brown_underline,
     :object_line_number        => :brown_underline,
+    :object_variable_prefix    => :light_purple,
+    :object_variable           => :light_purple,
     :close_object              => :green,
 
     # symbol
@@ -83,7 +84,9 @@ Ripl.config[:color_result_default_schema] ||= { # see Wirb::COLORS for a color l
     :close_rational     => :light_cyan,
 
     # misc
-    :keyword => nil,
+    :default => nil,
+    :keyword => nil, # some lowercased word, merge with default?
+    :time    => :purple,
     :nil     => :light_red,
     :false   => :red,
     :true    => :green,
