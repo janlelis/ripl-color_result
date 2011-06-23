@@ -9,13 +9,13 @@ module Ripl
 
       @result_prompt + case config[:color_result_engine].to_sym
       when :coderay
-        require 'coderay'
+        require 'coderay' unless defined?(CodeRay)
         CodeRay.scan( result.inspect, :ruby ).term
       when :ap, :awesome_print
-        require 'ap'
+        require 'ap' unless defined?(AwesomePrint)
         result.awesome_inspect( config[:color_result_ap_options] || {} )
       else # :default
-        require 'wirb'
+        require 'wirb' unless defined?(Wirb)
         Wirb.start
         Wirb.colorize_result result.inspect, Ripl.config[:color_result_default_schema]
       end
