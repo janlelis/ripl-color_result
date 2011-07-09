@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description =  "This ripl plugin colorizes ripl results."
   s.required_rubygems_version = ">= 1.3.6"
   s.add_dependency 'ripl', '>= 0.4.1'
-  s.add_dependency 'wirb', '>= 0.3.0'
+  s.add_dependency 'wirb', '>= 0.4.0'
   s.files = Dir.glob(%w[{lib,test}/**/*.rb bin/* [A-Z]*.{txt,rdoc} ext/**/*.{rb,c} **/deps.rip]) + %w{Rakefile .gemspec}
   s.extra_rdoc_files = ["README.rdoc", "COPYING"]
   s.license = 'MIT'
