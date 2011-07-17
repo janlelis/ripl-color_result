@@ -2,9 +2,10 @@ require 'ripl'
 
 module Ripl
   module ColorResult
-    VERSION = '0.4.0'
+    VERSION = '0.4.1'
 
     def before_loop
+      super
       if Ripl.config[:color_result_engine] == :default
         require 'wirb' unless defined?(Wirb)
         Ripl.config[:color_result_default_schema].merge! Wirb.schema
